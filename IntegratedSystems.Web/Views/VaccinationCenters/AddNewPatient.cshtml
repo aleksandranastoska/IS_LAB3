@@ -1,0 +1,34 @@
+﻿<h1>Add Patient</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddNewPatient">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label for="Manufacturer" class="control-label">Manufacturer</label>
+                <input id="Manufacturer" name="Manufacturer" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="DateTaken" class="control-label">Date Taken</label>
+                <input id="DateTaken" name="DateTaken" type="date" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="PatientId" class="control-label">Patient</label>
+                <select id="PatientId" name="PatientId" class="form-control">
+                    @foreach (var patient in ViewBag.Patients)
+                    {
+                        <option value="@patient.Id">@($"{patient.FirstName} {patient.LastName}")</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="VaccinationCenterId" class="control-label">Vaccination Center</label>
+                <input id="VaccinationCenterId" name="VaccinationCenterId" class="form-control" value="@ViewBag.VaccinationCenterId" disabled />
+            </div>
+            <input type="hidden" id="VaccinationCenterId" name="VaccinationCenterId" value="@ViewBag.VaccinationCenterId" />
+            <div class="form-group">
+                <input type="submit" value="AddNewPatient" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
